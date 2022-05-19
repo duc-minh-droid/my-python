@@ -3,11 +3,18 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
     host='localhost',
-    user='ducminh',
-    password='ndm30122005'
+    user='root',
+    password='ndm30122005',
+    database='mydatabase'
 )
 
-print(mydb)
+mycursor = mydb.cursor()
+
+mycursor.execute("SHOW TABLES")
+
+for x in mycursor:
+    print(x)
+
 
 
 

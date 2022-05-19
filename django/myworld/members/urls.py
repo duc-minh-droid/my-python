@@ -9,7 +9,9 @@ urlpatterns = [
     path('update/<int:id>', views.update, name='update'),
     path('update/updaterecord/<int:id>', views.updaterecord, name='updaterecord'),
     path('test/', views.testing, name='test'),
-    path('test/back/', views.back, name='back')
+    path('test/back/', views.back, name='back'),
+    path('moretest/', views.moretest, name='moretest'),
+    path('moretest/back/', views.back, name='back')
 ]
 
 

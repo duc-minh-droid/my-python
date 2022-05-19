@@ -84,3 +84,15 @@ def back(request):
 #   }
 #   return HttpResponse(template.render(context, request))
 
+def moretest(request):
+    template = loader.get_template('test3.html')
+    first_member = Members.objects.all().values()[0]
+    context = {
+        'fir': first_member,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+
+
+

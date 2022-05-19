@@ -1,0 +1,178 @@
+SELECT * FROM Customers;
+- select all data in the table
+
+SELECT Country FROM Customers;
+- select one column in the table
+
+SELECT DISTINCT Country FROM Customers;
+- select one column in the table
+- eliminate duplicates
+
+SELECT COUNT(DISTINCT Country) FROM Customers;
+- return the count of Country column in the table
+
+SELECT Count(*) AS DistinctCountries 
+FROM (SELECT DISTINCT Country FROM Customers);
+- from the distinctive country column, return the count 
+
+SELECT * FROM Customers
+WHERE Country='Mexico';
+- where for specifying the condition to filter the table
+
+SELECT * FROM Customers
+ORDER BY Country DESC|ASC;
+- order the data by descending or ascending order
+ORDER BY Country DESC, CustomerName ASC;
+- multiple order at a time
+
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+- from customers, insert the following columns with the provided values 
+- if one or several columns is not provided, the table will return null for those columns
+
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NOT NULL
+- get the three column in which their Address is available
+
+UPDATE Customers
+SET ContactName='Alfred Schmidt', City='Frankfurt'
+WHERE CustomerID = 1;
+- from the table, fix the value of ContactName and City under a condition
+- without condition, every value will be fixed
+
+DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+- delete the whole row containing Alfred
+
+SELECT TOP 3|50 PERCENT * FROM Customers;
+- get the first 3 rows in the table
+
+SELECT * FROM Customers
+WHERE Country='Germany'
+LIMIT 3;
+- same but used for mySQL
+
+SELECT MIN(Price)|MAX(Price) AS SmallestPrice
+FROM Products;
+- get the smallest price
+
+SELECT AVG(Price)|SUM(Quantity)
+FROM Products;
+- return a number which is the average price or the total Quantity
+
+WHERE CustomerName LIKE 'a%'	Finds any values that start with "a"
+WHERE CustomerName LIKE '%a'	Finds any values that end with "a"
+WHERE CustomerName LIKE '%or%'	Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%'	Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a_%'	Finds any values that start with "a" and are at least 2 characters in length
+WHERE CustomerName LIKE 'a__%'	Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'	Finds any values that start with "a" and ends with "o"
+
+%	Represents zero or more characters	                        bl% finds bl, black, blue, and blob
+_	Represents a single character	                            h_t finds hot, hat, and hit
+[]	Represents any single character within the brackets	        h[oa]t finds hot and hat, but not hit
+^	Represents any character not in the brackets	            h[^oa]t finds hit, but not hot and hat
+-	Represents any single character within the specified range	c[a-b]t finds cat and cbt
+
+
+SELECT * FROM Customers
+WHERE Country IN ('Germany', 'France', 'UK');
+- select every data in the following countries
+
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20;
+- basically 10 < Price < 20
+
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20
+AND CategoryID NOT IN (1,2,3);
+- use another AND
+
+SELECT * FROM Products
+WHERE ProductName BETWEEN "Carnarvon Tigers" AND "Chef Anton's Cajun Seasoning"
+ORDER BY ProductName;
+- between text, return the data in alphabetical order starting from Carnarvon to Chef Anton
+
+SELECT * FROM Orders
+WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+- between date, Year-Month-Day
+
+SELECT CustomerName AS Customer, ContactName AS [Contact Person]
+FROM Customers;
+- requires quotation mark or square brackets if the alias contains space 
+
+SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address
+FROM Customers;
+- Main usage: for combining columns as a whole
+
+SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+FROM Customers;
+- different syntax for mySQL
+
+SELECT o.OrderID, o.OrderDate, c.CustomerName
+FROM Customers AS c, Orders AS o
+WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
+- create alias for a table and access its column
+
+SELECT Orders.OrderID, Orders.OrderDate, Customers.CustomerName
+FROM Customers, Orders
+WHERE Customers.CustomerName='Around the Horn' AND Customers.CustomerID=Orders.CustomerID;
+- without alias
+
+SELECT o.OrderID, c.CustomerName, o.OrderDate
+FROM Orders AS o
+INNER JOIN Customers AS c ON o.CustomerID = c.CustomerID;
+- join two tables using a matching records
+- The INNER JOIN keyword selects all rows from both tables as long as there is a match between the columns. 
+- If there are records in the "Orders" table that do not have matches in "Customers", these orders will not be shown!
+
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+- join three tables
+
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+- group all of the country into a whole while displaying the count of ID 
+- HAVING is similar to WHERE but for working with functions like COUNT
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+- display SupplierName if the statement exists 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
