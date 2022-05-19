@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block myheading %}
+  <h1>Members</h1>
+{% endblock %}
+
+{% block mymessage %}
+  <ul>
+    {% for x in mymembers %}
+      <li>{{ x.firstname }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}  
