@@ -1,4 +1,3 @@
-
 import numpy as np
 
 # Create a numpy array
@@ -86,7 +85,6 @@ for idx, x in np.ndenumerate(arr):
 arrX = np.array([1, 2, 3])
 arrY = np.array([4, 5, 6])
 arrZ = np.concatenate((arrX, arrY))
-
 # stack() concatenating array value with one another, along with the axis?
 arrM = np.stack((arrX, arrY), axis=1)
 
@@ -99,6 +97,7 @@ newarr = np.array_split(arr, 4, axis=0)
 arr = np.array([1, 2, 3, 4, 5, 4, 4])
 x = np.where(arr == 4) # BOOLEAN
 # print(x) => (array([3, 5, 6],)
+# print('X: ',arr[x])
 
 # searchsorted() ~ The method starts the search from the left and returns the first index where the number 7 is no longer larger than the next value.
 arr = np.array([6, 7, 8, 9])

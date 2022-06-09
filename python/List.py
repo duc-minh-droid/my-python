@@ -73,8 +73,8 @@ fruitList = [x if x != "banana" else "orange" for x in fruits] # function like t
 # print(fruitList)
 
 # sort() alphabetical and numerical
-# reverse a list
 
+# reverse a list
 fruitList.sort(reverse = True)
 # all capital letters being sorted before lower case letters
 

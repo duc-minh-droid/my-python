@@ -28,7 +28,7 @@ print(p)
 
 # random multidimensional array from an array
 q = random.choice([1,3,5,7], size=(4,2))
-print(q)
+print('q:',q)
 
 # PROBABILITY
 a = random.choice(['6 stars unit','5 stars unit','4 stars unit','3 stars unit'],

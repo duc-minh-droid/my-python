@@ -1,7 +1,7 @@
 from  numpy import random
 
-unit_tier = [6, 5, 4, 3]
-unit_prob = [5/100, 15/100, 30/100, 50/100]
+unit_tier = [6, 5, 5, 4, 4, 4]
+unit_prob = [1/100, 7/100, 9/100, 25/100, 28/100, 30/100]
 
 def summon(number):
     unit = random.choice(unit_tier, p=unit_prob, size=number)

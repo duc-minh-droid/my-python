@@ -43,7 +43,7 @@ thisdict.clear()
 
 # fromkeys()
 x = ('key1', 'key2', 'key3')
-y = 'same' # All keys keep the same values
+y = ('same','not same') # All keys keep the same values
 thisdict = dict.fromkeys(x, y)
 # print(thisdict) => {'key1': 'same', 'key2': 'same', 'key3': 'same'}
 

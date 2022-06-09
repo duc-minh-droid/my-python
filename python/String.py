@@ -84,7 +84,7 @@ x = "mSa"
 y = "eLo"
 myTable = _txt.maketrans(x, y)
 # find each character and replace with new character
-# print(txt.translate(myTable))
+print(_txt.translate(myTable))
 
 # replace()
 new_txt = 'I love javascript'

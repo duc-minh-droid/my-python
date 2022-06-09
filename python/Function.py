@@ -24,11 +24,10 @@ def my_sum(x, y):
     if (x < y):
         result = x + my_sum(x+1, y)
     else:
-        result = x
-    # print(result)
+        result = 0
     return result
 
-print(my_sum(1, 10))
+print('My sum is',my_sum(1, 10))
 
 def my_multiplier(a):
     return lambda b: b*a
@@ -36,7 +35,14 @@ def my_multiplier(a):
 # Call the function twice is actually OK
 print(my_multiplier(2)(2))
 
-
+def factorial(a):
+    if a > 0:
+        return a * factorial(a-1)
+    else:
+        return 1
+    
+x = factorial(0)
+print('result is:', x)
 
 
 
